@@ -122,3 +122,52 @@ $users->toArray();
 ```php
 php artisan make:controller User/ExamTypeController
 ```
+
+## route cho admin và user
+
+Để tách riêng các phần `admin` và `user` mà không cần dùng chung `web.php`, bạn có thể tạo hai file routes riêng biệt, ví dụ là `admin.php` và `user.php`. Sau đó, bạn cấu hình trong file `RouteServiceProvider` để tự động nạp các file này. Dưới đây là cách thực hiện:
+
+1. **Tạo các file route**:
+   - Tạo hai file mới trong thư mục `routes`: `admin.php` và `user.php`.
+
+2. **Định nghĩa route trong từng file**:
+   - Trong `admin.php`, định nghĩa các route cho phần admin.
+   - Trong `user.php`, định nghĩa các route cho phần user.
+
+3. **Chỉnh sửa `RouteServiceProvider`**:
+   - Mở file `app/Providers/RouteServiceProvider.php`.
+   - Thêm các dòng sau trong phương thức `map()` để tự động load các file route mới:
+
+   ```php
+   protected function mapAdminRoutes()
+   {
+       Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/admin.php'));
+   }
+
+   protected function mapUserRoutes()
+   {
+       Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/user.php'));
+   }
+
+   public function map()
+   {
+       $this->mapApiRoutes();
+
+       $this->mapWebRoutes();
+
+       $this->mapAdminRoutes(); // Gọi hàm để load route admin
+       $this->mapUserRoutes();  // Gọi hàm để load route user
+   }
+   ```
+
+4. **Đảm bảo middleware và namespace**:
+   - Đảm bảo rằng các route được nạp với middleware `web` và namespace phù hợp nếu cần.
+
+5. **Tổ chức code**:
+   - Bằng cách này, bạn và partner có thể làm việc trên các file route riêng biệt mà không gây xung đột.
+
+Với cấu trúc này, bạn có thể dễ dàng quản lý và mở rộng các phần của ứng dụng mà không cần lo lắng về việc chồng chéo giữa các route.
