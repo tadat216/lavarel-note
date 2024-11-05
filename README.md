@@ -116,3 +116,9 @@ $user->assignRole('admin');
 $users = App\Models\User::all();
 $users->toArray();  
 ```
+
+## Tạo controller mới (Lưu ý ghi rõ User hay Admin)
+
+```php
+php artisan make:controller User/ExamTypeController
+```
