@@ -166,7 +166,72 @@ Nếu dự án Laravel của bạn không có `RouteServiceProvider`, có thể 
 
 Bằng cách này, bạn có thể quản lý các phần khác nhau của ứng dụng mà không cần phải chỉnh sửa cấu trúc của Laravel.
 
-## pull nhánh khác
+## Hợp nhất với nhánh master của project
+
+Để hợp nhất code từ hai nhánh `dat-ta` và `ngoc-tuyet` vào `master`, bạn có thể làm theo các bước sau:
+
+### 1. Đảm bảo code của bạn được commit
+
+Trước khi hợp nhất, hãy chắc chắn rằng tất cả thay đổi của bạn trên cả hai nhánh đều đã được commit.
+
+### 2. Cập nhật nhánh `master`
+
+Trước khi hợp nhất, đảm bảo rằng nhánh `master` của bạn được cập nhật với remote:
+
+```bash
+git checkout master
+git pull origin master
+```
+
+### 3. Hợp nhất từng nhánh vào `master`
+
+#### Hợp nhất nhánh `dat-ta` vào `master`
+
+```bash
+git checkout master
+git merge dat-ta
+```
+
+- Giải quyết xung đột nếu có.
+- Commit các thay đổi sau khi giải quyết xung đột.
+
+#### Hợp nhất nhánh `ngoc-tuyet` vào `master`
+
+```bash
+git checkout master
+git merge ngoc-tuyet
+```
+
+- Giải quyết xung đột nếu có.
+- Commit các thay đổi sau khi giải quyết xung đột.
+
+### 4. Đẩy `master` lên remote
+
+Sau khi hợp nhất thành công:
+
+```bash
+git push origin master
+```
+
+### 5. Cập nhật nhánh làm việc
+
+Sau khi hợp nhất, mỗi người nên cập nhật nhánh làm việc của mình để đồng bộ với `master`:
+
+```bash
+git checkout dat-ta
+git pull origin master
+
+git checkout ngoc-tuyet
+git pull origin master
+```
+
+### Tóm tắt
+
+- Luôn commit và pull các thay đổi mới nhất trước khi hợp nhất.
+- Giải quyết xung đột cẩn thận.
+- Đảm bảo nhánh `master` luôn ở trạng thái ổn định sau khi hợp nhất.
+
+## Hợp nhất nhánh không phải master
 
 Để đồng bộ code giữa hai người làm việc trên hai nhánh khác nhau và muốn hợp nhất các thay đổi, bạn có thể thực hiện các bước sau:
 
