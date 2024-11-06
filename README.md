@@ -170,9 +170,15 @@ Bằng cách này, bạn có thể quản lý các phần khác nhau của ứng
 
 Để hợp nhất code từ hai nhánh `dat-ta` và `ngoc-tuyet` vào `master`, bạn có thể làm theo các bước sau:
 
-### 1. Đảm bảo code của bạn được commit
+### 1. Đẩy code lên nhánh của bản thân
 
 Trước khi hợp nhất, hãy chắc chắn rằng tất cả thay đổi của bạn trên cả hai nhánh đều đã được commit.
+
+```bash
+git add .
+git commit -m '.'
+git push
+```
 
 ### 2. Cập nhật nhánh `master`
 
