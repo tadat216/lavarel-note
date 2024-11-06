@@ -165,3 +165,47 @@ Nếu dự án Laravel của bạn không có `RouteServiceProvider`, có thể 
      ```
 
 Bằng cách này, bạn có thể quản lý các phần khác nhau của ứng dụng mà không cần phải chỉnh sửa cấu trúc của Laravel.
+
+## pull nhánh khác
+
+Để đồng bộ code giữa hai người làm việc trên hai nhánh khác nhau và muốn hợp nhất các thay đổi, bạn có thể thực hiện các bước sau:
+
+1. **Đẩy thay đổi của bạn lên remote**:
+   - Đảm bảo rằng bạn đã commit tất cả các thay đổi của mình.
+   - Đẩy nhánh của bạn lên remote:
+     ```bash
+     git push origin dat-ta
+     ```
+
+2. **Kết hợp nhánh của bạn với nhánh của bạn bạn**:
+   - Chuyển sang nhánh của bạn bạn:
+     ```bash
+     git checkout ngoc-tuyet
+     ```
+   - Kéo các thay đổi từ remote:
+     ```bash
+     git pull origin ngoc-tuyet
+     ```
+   - Hợp nhất nhánh của bạn vào nhánh của bạn bạn:
+     ```bash
+     git merge dat-ta
+     ```
+   - Giải quyết xung đột nếu có, sau đó commit các thay đổi.
+
+3. **Đẩy nhánh hợp nhất lên remote**:
+   - Đẩy nhánh hợp nhất lên remote:
+     ```bash
+     git push origin ngoc-tuyet
+     ```
+
+4. **Kéo về nhánh của bạn**:
+   - Chuyển về nhánh của bạn:
+     ```bash
+     git checkout dat-ta
+     ```
+   - Kéo các thay đổi từ nhánh của bạn bạn:
+     ```bash
+     git pull origin ngoc-tuyet
+     ```
+
+Bằng cách này, cả hai bạn sẽ có cùng một mã nguồn sau khi hợp nhất và đẩy/pull các thay đổi.
