@@ -282,6 +282,8 @@ git pull origin master
 Bằng cách này, cả hai bạn sẽ có cùng một mã nguồn sau khi hợp nhất và đẩy/pull các thay đổi.
 
 ## Tạo model từ table trên csdl
+## Tạo Model từ bảng
+
 ```bash
-php artisan make:model Product --table=products
+$ php artisan code:models --table=result_details
 ```
