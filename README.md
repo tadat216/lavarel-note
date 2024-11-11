@@ -281,7 +281,10 @@ git pull origin master
 
 Bằng cách này, cả hai bạn sẽ có cùng một mã nguồn sau khi hợp nhất và đẩy/pull các thay đổi.
 
-## Tạo model từ table trên csdl
+## Eager Loading (giúp lấy bảng từ cơ sở dữ liệu nhanh hơn)
+
+[Link bài viết](https://viblo.asia/p/tim-hieu-ve-eager-loading-trong-laravel-XL6lA8YJZek)
+
 ## Tạo Model từ bảng
 
 ```bash
